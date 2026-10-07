@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mcp-hub
+  labels:
+    app.kubernetes.io/name: personal-mcp-hub
+    app.kubernetes.io/part-of: digital-assistant
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mcp-hub-config
+  namespace: mcp-hub
+data:
+  PROJECT_NAME: "Personal MCP Hub"
+  API_V1_STR: "/api/v1"
+  DATABASE_URL: "postgresql+asyncpg://postgres:postgres@postgres.mcp-hub.svc.cluster.local:5432/mcp_hub"
+  REDIS_URL: "redis://redis.mcp-hub.svc.cluster.local:6379/0"
+  NEXT_PUBLIC_API_URL: "https://mcphub.internal"
